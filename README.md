@@ -1,95 +1,124 @@
-# Airbnb Data Analysis & Price Prediction
+# 🏠 Airbnb NYC Pricing & Demand Prediction using Machine Learning
 
-## Introduction
+## 📌 Project Overview
+Pricing Airbnb listings correctly is critical for maximizing revenue and bookings.
+This project analyzes Airbnb NYC 2019 data and builds machine learning models to:
 
-Welcome to the Airbnb Data Analysis & Price Prediction project. This project focuses on analyzing Airbnb listings data to uncover insights about pricing patterns, location-based trends, and property characteristics. In addition, predictive models are built to estimate listing prices based on key features, helping hosts and stakeholders make data-driven pricing decisions.
+- Understand key drivers of listing prices
+- Identify factors influencing booking demand
+- Predict optimal prices and high-demand listings using ML
 
-## Dataset
+The project combines **exploratory data analysis, feature engineering, regression,
+classification, and business insights** into an end-to-end analytics solution.
 
-The dataset used in this project contains Airbnb listing information, including property details, host attributes, location data, room types, availability, and pricing.  
-It consists of both numerical and categorical variables and represents real-world short-term rental market dynamics.
+---
 
-*(If sourced from a public dataset such as Inside Airbnb or Kaggle, the link can be added here.)*
+## 🎯 Business Objectives
+- Analyze how location, property type, and host behavior affect pricing
+- Predict nightly listing prices using regression models
+- Classify listings into **high-demand vs low-demand** categories
+- Translate ML outputs into actionable business recommendations
 
-## Project Objectives
+---
 
-The main objectives of this project are:
+## 📂 Dataset
+- **Source:** Airbnb NYC 2019 dataset  
+- **Observations:** ~49,000 listings  
+- **Key Features:**
+  - Location (latitude, longitude, neighbourhood)
+  - Property & room type
+  - Host portfolio size
+  - Reviews and engagement metrics
+  - Availability and pricing information
 
-1. **Exploratory Data Analysis (EDA)**:  
-   Analyze Airbnb listings to understand price distributions, popular locations, room types, and availability patterns.
+---
 
-2. **Feature Impact Analysis**:  
-   Identify which factors (location, room type, number of reviews, availability, etc.) most influence listing prices.
+## 🧹 Data Cleaning & Feature Engineering
+Key preprocessing steps:
+- Handled missing values using business-sensible defaults
+- Log-transformed price to reduce skewness
+- Engineered demand and engagement features
+- Encoded categorical variables using one-hot encoding
+- Removed extreme price outliers for stability
 
-3. **Data Preparation**:  
-   Clean the dataset, handle missing values, encode categorical variables, and prepare features for modeling.
+---
 
-4. **Price Prediction**:  
-   Build machine learning models to predict Airbnb listing prices based on property and location features.
+## 🔍 Exploratory Data Analysis (EDA)
+Key findings:
+- Manhattan listings command the highest average prices
+- Entire homes are priced significantly higher than shared or private rooms
+- A small number of hosts control a large share of listings
+- Review activity strongly correlates with booking demand
 
-5. **Business Insights**:  
-   Generate actionable insights that can help hosts optimize pricing strategies and understand market behavior.
+---
 
-## Data Preprocessing
+## 🤖 Machine Learning Models
 
-The following preprocessing steps were applied:
+### 🔹 Price Prediction (Regression)
+| Model | Purpose | Metric |
+|------|--------|--------|
+| Linear Regression | Baseline | RMSE |
+| Random Forest Regressor | Final Model | Lower RMSE |
 
-- **Missing Value Treatment**: Handled missing or inconsistent values across numerical and categorical features.
-- **Outlier Handling**: Examined extreme price values to reduce skewness and improve model performance.
-- **Encoding Categorical Variables**: Converted categorical features such as room type and neighborhood into numerical representations.
-- **Feature Scaling**: Scaled numerical features where required to improve model convergence and performance.
+📌 **Random Forest outperformed Linear Regression**, indicating strong non-linear
+pricing dynamics.
 
-## Exploratory Data Analysis (EDA)
+---
 
-During the EDA phase, the following analyses were performed:
+### 🔹 Demand Prediction (Classification)
+- Framed demand as a binary classification problem
+- Used review activity as a proxy for booking demand
+- Evaluated using:
+  - Confusion Matrix
+  - Precision, Recall, F1-Score
 
-- **Price Distribution Analysis**: Examined how prices vary across listings and identified skewness and outliers.
-- **Location-Based Trends**: Compared average prices across neighborhoods and regions.
-- **Room Type Analysis**: Analyzed pricing differences between entire homes, private rooms, and shared rooms.
-- **Availability & Reviews**: Studied the relationship between availability, number of reviews, and pricing.
-- **Correlation Analysis**: Identified relationships between numerical variables and listing prices.
+📌 Review frequency and location emerged as the strongest demand drivers.
 
-Visualizations such as histograms, box plots, bar charts, and correlation heatmaps were used extensively.
+---
 
-## Model Building
+## 📊 Model Evaluation
 
-Multiple machine learning models were explored to predict Airbnb listing prices, including:
+### Price Prediction
+- Random Forest achieved significantly lower RMSE than the baseline
+- Captured complex interactions between location, room type, and engagement
 
-- **Linear Regression**: Baseline model for understanding linear relationships.
-- **Decision Tree Regressor**: Captured non-linear patterns in pricing behavior.
-- **Ensemble Models (if applicable)**: Improved predictive performance by reducing bias and variance.
+### Demand Classification
+- High recall for high-demand listings
+- Suitable for identifying listings with strong booking potential
 
-Hyperparameters were tuned to achieve optimal performance.
+---
 
-## Model Evaluation
+## 🔎 Feature Importance Insights
+- **Pricing Drivers:** Location, room type, host portfolio size
+- **Demand Drivers:** Reviews per month, total reviews, location
+- Pricing and demand are influenced by **different factors**
 
-Model performance was evaluated using appropriate regression metrics, including:
+---
 
-- **R² Score**
-- **Mean Absolute Error (MAE)**
-- **Root Mean Squared Error (RMSE)**
+## 💡 Business Insights & Recommendations
+- Location sets the price ceiling, but reviews drive demand
+- Hosts should prioritize early guest satisfaction to build demand
+- Entire homes benefit from premium pricing strategies
+- ML-based pricing outperforms static pricing rules
 
-These metrics helped assess how accurately the models predicted listing prices and generalized to unseen data.
+---
 
-## Key Insights
+## 🛠️ Tools & Technologies
+- **Python:** Pandas, NumPy, Scikit-learn
+- **Visualization:** Matplotlib, Seaborn, Plotly
+- **ML Models:** Linear Regression, Random Forest
+- **Platform:** Google Colab / Jupyter Notebook
 
-Some high-level insights from the analysis include:
+---
 
-- Location and room type are among the strongest drivers of Airbnb pricing.
-- Entire homes consistently command higher prices than private or shared rooms.
-- Listings with higher review counts and better availability patterns tend to show more stable pricing.
-- Extreme price outliers can significantly distort model performance if not handled carefully.
+## 🚀 Future Improvements
+- Incorporate seasonality and time-based demand
+- Add dynamic pricing recommendations
+- Use SHAP for advanced model explainability
+- Extend demand prediction to multi-class segmentation
 
-## Tools & Technologies
+---
 
-- **Python**
-- **pandas, numpy**
-- **matplotlib, seaborn**
-- **scikit-learn**
-- **Jupyter Notebook**
-
-## How to Run
-
-To reproduce the analysis and results:
-
-1. Clone the repository:
+## 👤 Author
+**Bodhisatva Mukherjee**  
+📍 Bengaluru, India  
